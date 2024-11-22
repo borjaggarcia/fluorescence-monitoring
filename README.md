@@ -52,25 +52,25 @@
 
 6. Para los charts modificar el config.ini:
 
-	[ui.overview.charts]
-	\# show/hide charts on the PioreactorUI dashboard
-	\# 1 is show, 0 is hide
-	implied_growth_rate=1
-	implied_daily_growth_rate=0
-	fraction_of_volume_that_is_alternative_media=0
-	normalized_optical_density=1
-	raw_optical_density=1
-	temperature=1
-	intensity_700nm_excitation_655nm_chart=1
-	intensity_658nm_excitation_655nm_chart=1
-	intensity_700nm_excitation_620nm_chart=1
-	intensity_658nm_excitation_620nm_chart=1
-	intensity_700nm_excitation_595nm_chart=1
-	intensity_658nm_excitation_595nm_chart=1
-	intensity_700nm_excitation_527nm_chart=1
-	intensity_658nm_excitation_527nm_chart=1
-	intensity_700nm_excitation_450nm_chart=1
-	intensity_658nm_excitation_450nm_chart=1
-	intensity_700nm_excitation_405nm_chart=1
-	intensity_658nm_excitation_405nm_chart=1
+	[ui.overview.charts] <br>
+	\# show/hide charts on the PioreactorUI dashboard <br>
+	\# 1 is show, 0 is hide <br>
+	implied_growth_rate=1 <br>
+	implied_daily_growth_rate=0 <br>
+	fraction_of_volume_that_is_alternative_media=0 <br>
+	normalized_optical_density=1 <br>
+	raw_optical_density=1 <br>
+	temperature=1 <br>
+	intensity_700nm_excitation_655nm_chart=1 <br>
+	intensity_658nm_excitation_655nm_chart=1 <br>
+	intensity_700nm_excitation_620nm_chart=1 <br>
+	intensity_658nm_excitation_620nm_chart=1 <br>
+	intensity_700nm_excitation_595nm_chart=1 <br>
+	intensity_658nm_excitation_595nm_chart=1 <br>
+	intensity_700nm_excitation_527nm_chart=1 <br>
+	intensity_658nm_excitation_527nm_chart=1 <br>
+	intensity_700nm_excitation_450nm_chart=1 <br>
+	intensity_658nm_excitation_450nm_chart=1 <br>
+	intensity_700nm_excitation_405nm_chart=1 <br>
+	intensity_658nm_excitation_405nm_chart=1 <br>
 
