@@ -1,0 +1,7 @@
+---
+display_name: Fluorescence Monitoring
+job_name: fluorescence_monitoring
+display: true
+source: Fluorescence Monitoring
+description: Monitors fluorescence by controlling LED intensities, performs periodic spectrometer measurements, and manages Arduino communication for LED control.
+published_settings: []

@@ -1,0 +1,10 @@
+include LICENSE README release-notes
+recursive-include etc *.rules
+recursive-include examples simple_spectrometer.py
+recursive-exclude rgbdriverkit calibrspectrometerdata.py
+recursive-exclude rgbdriverkit simulated*
+recursive-exclude rgbdriverkit test*
+recursive-exclude rgbdriverkit maxrtddriver.py
+recursive-exclude docs *
+recursive-exclude tests *
+recursive-exclude tools *

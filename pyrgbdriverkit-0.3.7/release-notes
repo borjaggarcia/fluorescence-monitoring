@@ -1,0 +1,32 @@
+# PyRgbDriverKit Release Notes
+
+0.3.7
+
+* Add methods that read wavelength and nonlinearity coefficients directly from device.
+
+0.3.6
+
+* Override method get_wavelengths() to read wavelengths directly from device.
+* Resolve loading of calibration data for on-board processing.
+* Adjust return codes in message layer of qseriesdriver.
+* Fix a bug where wavelength coefficients where not loaded from device.
+
+0.3.5
+
+* Modify search_devices() to return a list with found devices. This fixes
+searching and instantiating of more than one device.
+* Add optional parameter to search_devices() to find unique serial number
+with custom match.
+* Add example simple_spectrometer.
+* Fix a bug which does not write current time in time stamp of acquired spectra.
+* Fix a bug that prevents writing negative values to Qseries device.
+* Fix a bug where processing steps cannot be set correctly.
+* Rename package to pyrgbdriverkit
+
+0.3.4
+
+* Add averaging method to qseriesdriver.
+
+0.3.3
+
+* Initial pre-release of rgbdriverkit that includes most of the functionality.

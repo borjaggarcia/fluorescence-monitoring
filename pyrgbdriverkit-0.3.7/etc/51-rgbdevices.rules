@@ -1,0 +1,6 @@
+# Qmini 2
+SUBSYSTEM=="usb", ATTR{idVendor}=="276e", ATTR{idProduct}=="0208", SYMLINK+="qseries-qmini-%k", GROUP="users", MODE="0666"
+# Qred
+SUBSYSTEM=="usb", ATTR{idVendor}=="276e", ATTR{idProduct}=="0209", SYMLINK+="qseries-qred-%k", GROUP="users", MODE="0666"
+# Qwave 2
+SUBSYSTEM=="usb", ATTR{idVendor}=="276e", ATTR{idProduct}=="020a", SYMLINK+="qseries-qwave-%k", GROUP="users", MODE="0666"

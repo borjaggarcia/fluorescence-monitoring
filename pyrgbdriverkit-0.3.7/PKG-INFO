@@ -1,0 +1,192 @@
+Metadata-Version: 1.1
+Name: pyrgbdriverkit
+Version: 0.3.7
+Summary: Python Driver for RGB Photonics Devices
+Home-page: http://rgb-photonics.com
+Author: RGB Photonics GmbH
+Author-email: support@rgb-photonics.com
+License: Copyright (C) 2016 RGB Photonics GmbH. All Rights Reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+3. The name of the author may not be used to endorse or promote products
+   derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+OF SUCH DAMAGE.
+
+
+Description: # PyRgbDriverKit - README
+        
+        Copyright 2016-2017, RGB Photonics GmbH
+        
+        This software is a preliminary version. Function calls and parameters may
+        change without notice.
+        
+        The package 'pyrgbdriverkit' is intended to run on GNU/Linux systems using
+        Python. It allows to communicate with spectrometers from RGB Photonics.
+        
+        
+        ## Remarks
+        
+        Currently the preliminary version has some limitations:
+        
+        * Only new Qseries devices with a USB Type-C connector such as Qmini2 are supported.
+        * Device Qred is not yet supported.
+        
+        The preliminary version is intended to be used with Python 3. As Python 3.x is
+        the present and future of the language, and virtually all scientific packages
+        now support Python 3 as well, we will focus on Python 3. Although we try hard
+        to also provide backwards compatibility for Python 2.7.
+        
+        Please make sure to update the firmware of your Qseries devices to the latest
+        version.
+        
+        
+        ## Installing pyrgbdriverkit on GNU/Linux Systems
+        
+        These instructions are for Debian-based systems. Instruction for other flavors
+        of GNU/Linux should be similar.
+        
+        1) Install Python with elevated access rights
+        
+           $ sudo apt-get install python
+        
+        2) Make sure at least one of the supported libraries (libusb 1.0, libusb 0.1 or
+           OpenUSB) are installed. We recommend libusb 1.0 as a backend which can be
+           installed with this command:
+        
+           $ sudo apt-get install libusb-1.0-0
+        
+        3) Once the above packages are installed, you can untar the pyrgbdriverkit
+           software bundle.
+        
+           $ tar xzf pyrgbdriverkit-[version].tar.gz
+        
+        4) To install the pyrgbdriverkit Python package from source code run the command
+           as root within the same directory as this README file.
+        
+           $ sudo python setup.py install
+        
+           It is also possible to install the archive file directly with pip
+           (https://docs.python.org/3/installing/):
+        
+           $ sudo pip install pyrgbdriverkit-[version].tar.gz
+        
+           Using pip also provides an easy way to uninstall or update the package.
+        
+        5) Before using any device, the application or rather the user needs permission
+           to access it. This can be achieved by copying the udev rule located in the
+           package directory etc/
+        
+           $ sudo cp etc/51-rgbdevices.rules /etc/udev/rules.d/
+        
+           You might load the new rules afterwards:
+        
+           $ sudo udevadm control --reload
+           $ sudo udevadm trigger
+        
+           This rule will allow users in the 'users' group to access Qseries devices
+           such as Qmini2 or Qred. (This might not be necessary on MacOS.)
+        
+        
+        ## Uninstalling this module
+        
+        To uninstall this module you need to find out what files were installed and
+        then use that list to remove those files:
+        
+        $ sudo python setup.py install --record install-files.txt
+        $ cat install-files.txt | sudo xargs rm -rf
+        
+        (Remember to run the commands within the same directory as this README file.)
+        
+        If pip was used to install the package it can be removed with:
+        
+        $ pip uninstall pyrgbdriverkit
+        
+        
+        ## Additional information
+        
+        If you encounter the following error it is an indicator that you have not
+        properly set permissions to access the device with the current user:
+        
+        usb.core.USBError: [Errno 13] Access denied (insufficient permissions)
+        
+        A first test to see if the device appears correctly is to check if the symlink
+        specified in the udev rule is created. The %k operator in the udev rules
+        evaluates to the kernel name for the device, e.g. /dev/qseries-qmini-x-x.x
+        
+        $ ls -l /dev/qseries*
+        
+        
+        ## Usage of pyrgbdriverkit
+        
+        To test the installation open a bash shell and type:
+        
+        > python
+        > import rgbdriverkit
+        > rgbdriverkit.__version__
+        
+        This should print the version of the installed package.
+        
+        A demo called simple_spectrometer.py is provided for a first starting point.
+        Please note that the demo needs matplotlib for saving the spectrum to a file
+        if you have set 'main(save_plot=True)'.
+        All examples are located in the 'examples' folder of the .tar.gz archive file.
+        
+        
+        ## Get Help
+        
+        The built-in function help() invokes the online help system in the interactive interpreter:
+        
+        > help(rgbdriverkit)
+        or
+        > help(rgbdriverkit.qseriesdriver)
+        
+        Please note that you have to import the appropriate modules.
+        
+        
+        ## Tests
+        
+        Tests of this Python package were carried out:
+        
+        * Arch Linux (4.7.4.1-ARCH)
+        * Python 3.5.0
+        * Backend libusb-1.0.9
+        * PyUSB 1.0.0b2+
+        
+        Other platforms we have tested include:
+        * BeagleBoneBlack
+        * Raspberry Pi 2 and 3
+        * MacOS Sierra 10.12.4 and El Capitan 10.11.6
+        
+        
+        # References
+        
+        * PyUSB : https://walac.github.io/pyusb/
+        * libusb : http://libusb.info
+        
+Platform: Linux
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
