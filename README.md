@@ -53,8 +53,8 @@
 6. Para los charts modificar el config.ini:
 
 	[ui.overview.charts]
-	# show/hide charts on the PioreactorUI dashboard
-	# 1 is show, 0 is hide
+	\# show/hide charts on the PioreactorUI dashboard
+	\# 1 is show, 0 is hide
 	implied_growth_rate=1
 	implied_daily_growth_rate=0
 	fraction_of_volume_that_is_alternative_media=0
