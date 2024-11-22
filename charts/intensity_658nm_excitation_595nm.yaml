@@ -1,0 +1,13 @@
+
+---
+chart_key: normalized_intensity_658nm_excitation_595nm_chart
+data_source: normalized_intensity_658nm_data_595nm
+data_source_column: normalized_intensity
+title: Normalized Intensity at 658 nm (Excitation 595 nm)
+y_axis_label: Normalized Intensity (658 nm)
+fixed_decimals: 4
+mqtt_topic: pioreactor/spectrometer/normalized_intensity_658nm_595nm
+source: fluorescence_monitoring
+interpolation: linear
+y_axis_domain: [0, 1]
+

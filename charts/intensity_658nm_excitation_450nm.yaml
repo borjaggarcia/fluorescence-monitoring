@@ -1,0 +1,12 @@
+
+---
+chart_key: normalized_intensity_658nm_excitation_450nm_chart
+data_source: normalized_intensity_658nm_data_450nm
+data_source_column: normalized_intensity
+title: Intensity at 658 nm (Excitation 450 nm)
+y_axis_label: Intensity (658 nm)
+fixed_decimals: 4
+mqtt_topic: pioreactor/spectrometer/normalized_intensity_658nm_450nm
+source: fluorescence_monitoring
+interpolation: linear
+y_axis_domain: [0, 1]

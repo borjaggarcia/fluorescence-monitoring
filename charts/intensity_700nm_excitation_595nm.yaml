@@ -1,0 +1,12 @@
+
+---
+chart_key: normalized_intensity_700nm_excitation_595nm_chart
+data_source: normalized_intensity_700nm_data_595nm
+data_source_column: normalized_intensity
+title: Intensity at 700 nm (Excitation 595 nm)
+y_axis_label: Intensity (700 nm)
+fixed_decimals: 4
+mqtt_topic: pioreactor/spectrometer/normalized_intensity_700nm_595nm
+source: fluorescence_monitoring
+interpolation: linear
+y_axis_domain: [0, 1]

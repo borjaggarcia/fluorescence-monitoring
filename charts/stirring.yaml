@@ -1,0 +1,13 @@
+---
+chart_key: stirring_rate
+data_source: stirring_rates # SQL table
+data_source_column: measured_rpm
+title: Stirring rate
+mqtt_topic: stirring/measured_rpm
+source: app
+payload_key: measured_rpm
+y_axis_label: RPM
+interpolation: stepAfter
+y_axis_domain: [0, 800]
+lookback: 100000
+fixed_decimals: 0

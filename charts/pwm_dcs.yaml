@@ -1,0 +1,13 @@
+---
+chart_key: pwm_dcs 
+data_source: pwm_dcs
+data_source_column: channel_1
+title: Duty cycles for stirring PWM 
+mqtt_topic: pwms/dc
+source: app 
+payload_key: "17"
+y_axis_label: Duty cycle
+interpolation: stepAfter
+y_axis_domain: [0, 100]
+lookback: 100000
+fixed_decimals: 2
