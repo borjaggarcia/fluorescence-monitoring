@@ -1,76 +1,71 @@
 # fluorescence-monitoring
 **Fluorescence monitoring plugin for Pioreactor systems: interfaces with Arduino for excitation LED control and automates spectrometer measurements.**
 
-## Cómo Instalar en Pluging
-1. Asegurar de que tienes la última versión de Python y pip:
+## How to Install the Plugin
 
-	sudo apt install python3 python3-pip
+1. Ensure you have the latest version of Python and pip:
 
+   sudo apt install python3 python3-pip
 
-2. Para hacer funcionar el espectrómetro, se necesitan libusb, pyusb, y rgbdriverkit.
+2. To make the spectrometer work, you need libusb, pyusb, and rgbdriverkit.
 
-	2.1. Instalar libusb:
-    		sudo apt install libusb-1.0-0-dev
+   2.1. Install libusb:
+   sudo apt install libusb-1.0-0-dev
 
-    
-	2.2. Instalar pyusb:
-    		pip3 install pyusb
-  
-    
-	2.3. Instalar matplotlib (para las gráficas):
-    		sudo apt install python3-matplotlib
-   
-    
-	2.4. Instalar el driver del espectrómetro:
-    		Copiar la carpeta pyrgbdriverkit-0.3.7 en el pio.
-		Colocarse en la misma carpeta en el que se encuentra el setup.py y ejecutar
-		sudo pip3 install .
+   2.2. Install pyusb:
+   pip3 install pyusb
 
-3. Crear reglas udev.
+   2.3. Install matplotlib (for graphs):
+   sudo apt install python3-matplotlib
 
-	Espectrometro:
+   2.4. Install the spectrometer driver:
+   - Copy the folder `pyrgbdriverkit-0.3.7` to the Pioreactor.
+   - Navigate to the folder containing `setup.py` and execute:
+   sudo pip3 install .
 
-	sudo nano /etc/udev/rules.d/99-spectrometer.rules
-	SUBSYSTEM=="usb", ATTRS{idVendor}=="276e", ATTRS{idProduct}=="0208", MODE="0666"
+3. Create udev rules.
 
-	Arduino:
+   **For the spectrometer:**
+   sudo nano /etc/udev/rules.d/99-spectrometer.rules
+   Add the following line:
+   SUBSYSTEM=="usb", ATTRS{idVendor}=="276e", ATTRS{idProduct}=="0208", MODE="0666"
 
-	sudo nano /etc/udev/rules.d/99-arduino.rules
-	SUBSYSTEM=="tty", ATTRS{serial}=="393D99A6EA0D4AE8", SYMLINK+="arduino"
+   **For the Arduino:**
+   sudo nano /etc/udev/rules.d/99-arduino.rules
+   Add the following line:
+   SUBSYSTEM=="tty", ATTRS{serial}=="393D99A6EA0D4AE8", SYMLINK+="arduino"
 
+   Save the file and reload udev rules:
+   sudo udevadm control --reload-rules
+   sudo udevadm trigger
+   Disconnect and reconnect the devices to apply the new rules.
 
-	guardar archivo y recargar las reglas udev:
-	sudo udevadm control --reload-rules
-	sudo udevadm trigge
+4. Place the `fluorescence_monitoring.py` file in the plugins folder.
 
-	desconectar y conectar para que las nuevas reglas se apliquen
+5. Add the corresponding `.yaml` files in `ui/Jobs`, `ui/Charts`, and/or `ui/Automations` as needed.
 
+6. Modify the `config.ini` file for charts:
 
-4. Poner el fluorescence_monitoring.py en la carpeta de plugins.
-
-5. En ui/Jobs, Charts y/o Automations poner los .yaml correspondientes.
-
-6. Para los charts modificar el config.ini:
-
-	[ui.overview.charts] <br>
-	\# show/hide charts on the PioreactorUI dashboard <br>
-	\# 1 is show, 0 is hide <br>
-	implied_growth_rate=1 <br>
-	implied_daily_growth_rate=0 <br>
-	fraction_of_volume_that_is_alternative_media=0 <br>
-	normalized_optical_density=1 <br>
-	raw_optical_density=1 <br>
-	temperature=1 <br>
-	intensity_700nm_excitation_655nm_chart=1 <br>
-	intensity_658nm_excitation_655nm_chart=1 <br>
-	intensity_700nm_excitation_620nm_chart=1 <br>
-	intensity_658nm_excitation_620nm_chart=1 <br>
-	intensity_700nm_excitation_595nm_chart=1 <br>
-	intensity_658nm_excitation_595nm_chart=1 <br>
-	intensity_700nm_excitation_527nm_chart=1 <br>
-	intensity_658nm_excitation_527nm_chart=1 <br>
-	intensity_700nm_excitation_450nm_chart=1 <br>
-	intensity_658nm_excitation_450nm_chart=1 <br>
-	intensity_700nm_excitation_405nm_chart=1 <br>
-	intensity_658nm_excitation_405nm_chart=1 <br>
+   Add the following section:
+   [ui.overview.charts]
+   # show/hide charts on the PioreactorUI dashboard
+   # 1 is show, 0 is hide
+   implied_growth_rate=1
+   implied_daily_growth_rate=0
+   fraction_of_volume_that_is_alternative_media=0
+   normalized_optical_density=1
+   raw_optical_density=1
+   temperature=1
+   intensity_700nm_excitation_655nm_chart=1
+   intensity_658nm_excitation_655nm_chart=1
+   intensity_700nm_excitation_620nm_chart=1
+   intensity_658nm_excitation_620nm_chart=1
+   intensity_700nm_excitation_595nm_chart=1
+   intensity_658nm_excitation_595nm_chart=1
+   intensity_700nm_excitation_527nm_chart=1
+   intensity_658nm_excitation_527nm_chart=1
+   intensity_700nm_excitation_450nm_chart=1
+   intensity_658nm_excitation_450nm_chart=1
+   intensity_700nm_excitation_405nm_chart=1
+   intensity_658nm_excitation_405nm_chart=1
 
